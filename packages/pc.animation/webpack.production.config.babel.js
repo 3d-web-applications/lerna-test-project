@@ -9,7 +9,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: '[name].build2.js',
+    filename: '[name].build.js',
   },
   plugins: [
     new PlayCanvasWebpackPlugin({
