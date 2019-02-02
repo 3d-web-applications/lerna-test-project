@@ -106,19 +106,21 @@ lerna add @scope/math --scope="pc.animation"
 +    "@scope/math": "^1.0.0"
   }
 ```
-21. Bootstrap the packages inside the Lerna repo
+21. If you would enter **npm run build** now, you will see two new error messages. The first one should be **Module not found: Error: Can't resolve '@scope/math/src/inverse-lerp'**. This can be fixed by bootstrapping the packages inside the Lerna repo.
 ```bash
 lerna bootstrap
 ```
-22. Now build your project
+22. The second message should be **TypeError: Cannot read property 'minify' of undefined**. By bootstrapping the packages, the error should be already fixed
+23. Navigate into pc.animation again and build the project.
 ```bash
-cd packages/pc.Animation
+cd packages/pc.animation
 npm run build
 ```
-23. A few seconds later, you should now find a folder called **build** in your pc.Animation package. The build file inside can now be
+23. A few seconds later, you should now find a folder called **build** in your pc.animation package. The build file inside can now be
 uploaded into your [PlayCanvas](https://playcanvas.com/) project.
 
 ## Tips:
 - When you change attributes inside your PlayCanvas scripts, you will need to select the corresponding build file within
 your PlayCanvas project and click the **Parse** button.
+- Don't forget to add a [gitignore file](./.gitignore) to exclude node_modules.
 
