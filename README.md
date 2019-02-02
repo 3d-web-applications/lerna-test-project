@@ -27,10 +27,12 @@ lerna init --independent
 9. Create 2 new packages called math and pc.animation
 ```bash
 cd packages
-mkdir math && cd math
+mkdir math
+cd math
 npm init -y
 cd ..
-mkdir pc.animation && cd pc.animation
+mkdir pc.animation
+cd pc.animation
 npm init -y
 ```
 10. Copy and paste the following files into your project:
@@ -41,7 +43,7 @@ npm init -y
 - [./packages/pc.animation/.eslintrc](./packages/pc.animation/.eslintrc)
 - [./packages/pc.animation/EXAMPLE.config.json](./packages/pc.animation/EXAMPLE.config.json)
 - [./packages/pc.animation/webpack.production.config.babel.js](./packages/pc.animation/webpack.production.config.babel.js)
-11. Add the following parts into ./packages/pc.animation/package.json
+11. Add/Replace the following parts within ./packages/pc.animation/package.json.
 ```json
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -68,11 +70,10 @@ npm init -y
     "playcanvas-webpack-plugin": "^1.0.8",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2"
-  },
+  }
 ```
 12. Install required NPM packages
 ```bash
-cd packages/pc.Animation
 npm install
 ```
 13. If some packages could not be installed. Run the command above once more!
