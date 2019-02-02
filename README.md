@@ -41,9 +41,9 @@ npm init -y
 - [./packages/pc.animation/src/main.js](./packages/pc.animation/src/main.js)
 - [./packages/pc.animation/.babelrc](./packages/pc.animation/.babelrc)
 - [./packages/pc.animation/.eslintrc](./packages/pc.animation/.eslintrc)
-- [./packages/pc.animation/EXAMPLE.config.json](./packages/pc.animation/EXAMPLE.config.json)
 - [./packages/pc.animation/webpack.production.config.babel.js](./packages/pc.animation/webpack.production.config.babel.js)
-11. Add/Replace the following parts within ./packages/pc.animation/package.json.
+11. Create another file ./packages/pc.animation/config.json. It is required by the [playcanvas-webpack-plugin](https://www.npmjs.com/package/playcanvas-webpack-plugin) package. We will not use the automatic upload feature, so the content of the file does not matter. For instance you could copy&paste the content of [this EXAMPLE.config.json](./packages/pc.animation/EXAMPLE.config.json) into it.
+12. Add/Replace the following parts within ./packages/pc.animation/package.json.
 ```json
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -72,33 +72,50 @@ npm init -y
     "webpack-cli": "^3.1.2"
   }
 ```
-12. Install required NPM packages
+13. Install required NPM packages
 ```bash
 npm install
 ```
-13. If some packages could not be installed. Run the command above once more!
-14. Make **math** available in **pc.animation**
+14. If some packages could not be installed. Run the command above once more!
+15. Try to make **math** available in **pc.animation**. Some errors will be presented when you enter the next command. Just keep on
+reading, to solve the problem.
 ```bash
 cd ../..
 lerna add math --scope="pc.animation"
 ```
-15. Now you might think, that you are ready to build the project by entering **npm run build** inside packages/pc.Animation.
-Unfortunately there are still some things to do. 
-For instance, when hovering with your mouse cursor over **math** inside ./packages/pc.animation/package.json, you will see 
-that you try to use math version 1.0.0, but the newest version is only 0.0.3. Moreover when analyzing 
+16. If you would now enter **npm run build** inside packages/pc.Animation to build the project, it will fail.
+When hovering with your mouse cursor over **math** inside ./packages/pc.animation/package.json, you will see 
+that you try to use **math** version 1.0.0, but the newest version available is only 0.0.3. Moreover when analyzing 
 ./packages/pc.animation/src/hover-animation.js, you will see, that the import of the **inverseLerp** function does not work.
 The reason is that, we did not link cross-dependencies yet. Webpack will try to use 
-[this math package](https://www.npmjs.com/package/math) instead.
-16. To solve this problem, we need to bootstrap the packages inside the Lerna repo
+[this math package](https://www.npmjs.com/package/math) instead. So what can we do to solve the problem?
+17. Your **math** project needs a unique name, which is not already taken by some other published NPM package.
+The best solution is to add @scopes to your packages. Doing that will prevent you for some errors in the future. Because other developers could publish packages with the same  name you have picked for your unpublished packages.
+18. To solve this problem, change the package name inside packages/math/package.json
+```bash
+"name": "@scope/math",
+```
+19. Now make **@scope/math** available in **pc.animation**
+```bash
+lerna add @scope/math --scope="pc.animation"
+```
+20. Remove math inside the dependencies of packages/pc.Animation/package.json. Your list of dependencies should now look like this one.
+```diff
+  "dependencies": {
+-    "math": "^1.0.0"
++    "@scope/math": "^1.0.0"
+  }
+```
+21. Bootstrap the packages inside the Lerna repo
 ```bash
 lerna bootstrap
 ```
-17. Now build your project
+22. Now build your project
 ```bash
 cd packages/pc.Animation
 npm run build
 ```
-18. A few seconds later, you should now find a folder called **build** in your pc.Animation package. The build file inside can now be
+23. A few seconds later, you should now find a folder called **build** in your pc.Animation package. The build file inside can now be
 uploaded into your [PlayCanvas](https://playcanvas.com/) project.
 
 ## Tips:
