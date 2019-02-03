@@ -1,4 +1,4 @@
-import { inverseLerp } from '@scope/math/src/inverse-lerp';
+import { inverseLerp } from '@lars-wobus/math/src/inverse-lerp';
 
 const { attributes, prototype } = pc.createScript('HoverAnimation');
 
