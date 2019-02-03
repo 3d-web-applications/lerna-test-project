@@ -1,6 +1,6 @@
 {
   "name": "@lars-wobus/pc.animation",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -30,7 +30,7 @@
     "webpack-cli": "^3.1.2"
   },
   "dependencies": {
-    "@lars-wobus/math": "^0.0.7"
+    "@lars-wobus/math": "^0.0.8"
   },
   "gitHead": "f1016dbb8563057f7f2da189fc8ca077b5cb94a5",
   "publishConfig": {
