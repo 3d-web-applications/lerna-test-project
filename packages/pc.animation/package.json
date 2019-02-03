@@ -30,7 +30,7 @@
     "webpack-cli": "^3.1.2"
   },
   "dependencies": {
-    "@scope/math": "^1.0.0"
+    "@lars-wobus/math": "^1.0.0"
   },
   "gitHead": "f1016dbb8563057f7f2da189fc8ca077b5cb94a5",
   "publishConfig": {
