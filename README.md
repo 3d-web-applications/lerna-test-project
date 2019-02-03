@@ -123,4 +123,5 @@ uploaded into your [PlayCanvas](https://playcanvas.com/) project.
 - When you change attributes inside your PlayCanvas scripts, you will need to select the corresponding build file within
 your PlayCanvas project and click the **Parse** button.
 - Don't forget to add a [gitignore file](./.gitignore) to exclude node_modules.
+- Before publishing, you should navigate into each of your packages. Run **npm pack** and analyze the tarballs. You might see files, you have already ignored in your global .gitignore file. Exposing secrets would be bad. To prevent publishing secrets, don't forget to add .npmignore files inside your packages!
 
