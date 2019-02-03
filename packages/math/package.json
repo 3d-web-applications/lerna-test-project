@@ -6,5 +6,9 @@
   },
   "keywords": [],
   "author": "Lars Wobus",
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "f1016dbb8563057f7f2da189fc8ca077b5cb94a5",
+  "publishConfig": {
+    "access": "public"
+  }
 }
