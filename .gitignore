@@ -2,5 +2,6 @@
 **build/
 **dist/
 **.stackdump
+**.tgz
 lerna-debug.log
 packages/pc.animation/config.json
