@@ -99,7 +99,7 @@ The best solution is to add @scopes to your packages. Doing that will prevent yo
 ```bash
 lerna add @scope/math --scope="pc.animation"
 ```
-20. Remove math inside the dependencies of packages/pc.Animation/package.json. Your list of dependencies should now look like this one.
+20. Remove math inside the dependencies of packages/pc.animation/package.json. Your list of dependencies should now look like this one.
 ```diff
   "dependencies": {
 -    "math": "^1.0.0"
@@ -110,7 +110,13 @@ lerna add @scope/math --scope="pc.animation"
 ```bash
 lerna bootstrap
 ```
-22. The second message should be **TypeError: Cannot read property 'minify' of undefined**. By bootstrapping the packages, the error should be already fixed
+22. The second message should be **TypeError: Cannot read property 'minify' of undefined**. By bootstrapping the packages, the error should be already fixed. But if the error still occurs, we don't spend our precious time with fixing this problem now. One way to avoid this problems is to open packages/pc.animation/webpack.production.config.babel and change the following line.
+```diff
+  optimization: {
+-    minimize: true,
++    minimize: false,
+  },
+```
 23. Navigate into pc.animation again and build the project.
 ```bash
 cd packages/pc.animation
