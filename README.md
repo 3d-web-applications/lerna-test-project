@@ -138,4 +138,8 @@ your PlayCanvas project and click the **Parse** button.
     "access": "public"
   }
 ```
+- If you want to bundle your PlayCanvas scripts from other packages inside a new project or inside a new Lerna package, you can reuse the proposed configurations for Webpack, Babel, Jest and ESLint. You can also reuse [this package.json](./packages/pc.animation/package.json), but don't forget to change the **name** for your new package. Maybe you should also double-check the **dependencies** section. Afterwards go on and create another main.js file and import scripts from other packages as seen below
+```javascript
+  import '@lars-wobus/pc.animation/src/hover-animation';
+```
 
