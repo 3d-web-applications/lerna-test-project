@@ -130,4 +130,12 @@ uploaded into your [PlayCanvas](https://playcanvas.com/) project.
 your PlayCanvas project and click the **Parse** button.
 - Don't forget to add a [gitignore file](./.gitignore) to exclude node_modules.
 - Before publishing, you should navigate into each of your packages. Run **npm pack** and analyze the tarballs. You might see files, you have already ignored in your global .gitignore file. Exposing secrets would be bad. To prevent publishing secrets, don't forget to add .npmignore files inside your packages!
+- When publishing packages with Lerna, make sure you have already added a registry user account (see [npm adduser](https://docs.npmjs.com/cli/adduser))
+- When changing package names, versions or scopes manually, don't forget to run `lerna bootstrap` again. Afterwards you might need to link packages, for instance: `lerna add @lars-wobus/math --scope=@lars-wobus/pc.animation`. And don't forget to update require-/import-statements within your Javascript files. 
+- If you use scoped packages with a free NPM account, you will need to add the following extract into your package.json files
+```json
+  "publishConfig": {
+    "access": "public"
+  }
+```
 
